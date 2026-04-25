@@ -1,7 +1,8 @@
 # Topic: starchain-coffee-franchise
 
-來源：LINE「星鏈咖啡機合約群」聊天記錄（2026-02-10 ~ 2026-04-24）。
-原始檔：`references/sources/LINE_星鏈咖啡機合約群_20260425.txt`
+來源：
+- LINE「星鏈咖啡機合約群」聊天記錄（2026-02-10 ~ 2026-04-24）：`references/sources/LINE_星鏈咖啡機合約群_20260425.txt`
+- LINE「星鏈核心領導」聊天記錄（2026-04-17 ~ 2026-04-25）：`references/sources/LINE_星鏈核心領導_20260425.txt`
 **權威性：本主題以姜建良（LINE 名稱「C.J.Liang - 手拉區塊鏈」、群組稱「姜總」）的回覆為唯一解答來源。** 其他人（米、Tony Stark、展碩公務）的言論僅作背景參考；若內容跟姜總回覆衝突，以姜總為準。
 
 ## Summary
