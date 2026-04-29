@@ -7,17 +7,12 @@ description: Handle invoice-image intake for the Google Sheet and Drive workflow
 
 ## Session memory shared rules
 
-Apply these rules to all routing and repeated follow-up questions in this skill.
+Apply these rules to repeated follow-up questions in this skill.
 
-- Within the same session, if the user has already clearly confirmed a reusable flow decision, continue to use it for later invoices of the same batch and do not ask again.
+- Within the same session, if the user has already supplied a reusable answer (for example, a default 來源), continue to use it for later invoices of the same batch and do not ask again.
 - If the user later changes that decision in the same session, immediately replace the old value with the new one and continue with the new value.
 - Only remember stable workflow choices, not per-invoice values that should be reconfirmed for each document.
-- If a newly uploaded invoice clearly belongs to the same ongoing batch, default to the existing flow choice. If it appears to be a new task, a new batch, or the context is unclear, ask again.
 - If reusing session memory could cause a wrong write target or wrong categorization, ask instead of assuming.
-
-**This skill must remember within the session:**
-- Whether the invoice flow has already been confirmed as the lobster petty-cash workflow
-- Whether the invoice flow has already been confirmed as the general reimbursement workflow
 
 **This skill must not assume from prior invoices unless explicitly reconfirmed or clearly visible on the new invoice:**
 - Per-invoice extracted fields such as 發票號碼, 品項, 金額, 日期, 統編, category, or source
@@ -47,23 +42,7 @@ If the user later changes the destination, confirm before writing.
 
 When the user uploads an invoice image or 勞務報酬單 image:
 
-- If this session has already confirmed that subsequent invoice/receipt images should use the lobster petty-cash flow, continue directly and do not ask again.
-- If this session has already confirmed that subsequent invoice/receipt images should use the general reimbursement flow, stop this skill and route to `expense-report`.
-- If the session has not established a flow yet, and the user only uploads an invoice/receipt image or the message does not clearly indicate whether this belongs to the general reimbursement flow or the lobster petty-cash flow, ask exactly this routing question first:
-  「這張單據要走哪個流程？
-  1. 一般報帳（實見/益循）
-  2. 小龍蝦零用金發票登錄」
-- In that unconfirmed state, do not run image analysis, do not extract fields, do not classify the document, and do not show OCR results, guessed fields, or follow-up confirmation in the same reply.
-- If the user chooses 1, and this choice is a reply to an already-uploaded image in the current turn context, immediately stop this skill and hand off to `expense-report` as an image-based reimbursement flow, not as manual-entry reimbursement flow.
-- If the user chooses 1, record that this session should continue with the general reimbursement flow and stop this skill, routing to `expense-report`.
-- If the user chooses 2, and this choice is a reply to an already-uploaded image in the current turn context, immediately continue this skill as an image-based lobster petty-cash flow.
-- If the user chooses 2, record that this session should continue with the lobster petty-cash flow and continue this skill.
-- Only continue this skill after one of these is true:
-  - the user explicitly chooses 2 in this session, or
-  - the surrounding text already clearly states that this document belongs to the lobster petty-cash workflow.
-- If the image was already uploaded before the routing answer arrived, treat the routing answer as deciding which image-processing branch to continue, not as permission to discard the uploaded image context.
-- Do not infer lobster petty-cash routing from the document type alone. A 勞務報酬單, receipt, or invoice image by itself is not enough to skip the routing question.
-- After the flow is confirmed as lobster petty-cash, use image analysis to extract visible text and structured fields.
+- Immediately use image analysis to extract visible text and structured fields. Do not ask any routing question; this skill always processes the document as a lobster petty-cash entry.
 - Always return the extraction in the ledger field format below. Do not stop at raw OCR text, document-title summaries, or free-form field dumps.
 - Parse these target fields for ledger entry:
   - 發票號碼
@@ -114,7 +93,7 @@ If multiple line items exist:
 
 ### 3. Return extraction results and ask for confirmation
 
-Only after the user has confirmed that this document should use the lobster petty-cash flow, show the extracted result back to the user before writing anything.
+Show the extracted result back to the user before writing anything.
 
 Use a compact confirmation format like this:
 
@@ -341,7 +320,6 @@ After both actions finish, reply with a concise completion summary:
 
 - Do not send data externally except to the target Google Sheet and Google Drive required by this workflow.
 - Treat 勞務報酬單 as a first-class supported document type in this workflow, not as an exception or fallback case.
-- However, a 勞務報酬單 upload still must follow the same routing gate as any other document when the session flow has not yet been confirmed.
 - Confirm before writing only when destination, structure, or parsed data is materially ambiguous.
 - If the user has already supplied some ledger fields in text, use them to override or fill OCR results for the same document instead of re-asking.
 - Prefer fewer larger Sheets writes over many tiny updates.

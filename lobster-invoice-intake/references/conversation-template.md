@@ -2,22 +2,7 @@
 
 Use this reference to keep the interaction concise and consistent.
 
-## Step 1: ask for routing first
-
-Example:
-
-這張單據要走哪個流程？
-1. 一般報帳（實見/益循）
-2. 小龍蝦零用金發票登錄
-
-適用於發票、收據、勞務報酬單。
-
-Rule:
-- At this step, ask only the routing question.
-- Do not include OCR results, extracted fields, document classification, or any confirmation request in the same message.
-- Before the user answers this routing question, do not run image analysis and do not infer the target workflow from the uploaded document type alone.
-
-## Step 2: show extracted fields after flow is confirmed
+## Step 1: show extracted fields
 
 發票 example:
 
@@ -54,7 +39,7 @@ Rule:
 - 不要改成回覆姓名、身分證字號、聯絡電話、地址等原始表單欄位，除非使用者明確要求看原始 OCR。
 - 若需要辨識原始表單欄位，也只能作為內部映射依據，對使用者仍優先展示 ledger 欄位結果。
 
-## Step 3: ask only for missing fields
+## Step 2: ask only for missing fields
 
 Example:
 
@@ -69,7 +54,7 @@ Example:
 Rule:
 - 如果使用者已經在同一則訊息或前一則補上欄位，例如日期、來源、公司名稱、品項、金額，就直接沿用，不要重問。
 
-## Step 4: ask for category
+## Step 3: ask for category
 
 發票 example:
 
@@ -83,7 +68,7 @@ Rule:
 
 這張單據我建議歸類為「其他」，你要沿用這個類別嗎？
 
-## Step 5: ask for source
+## Step 4: ask for source
 
 Example:
 
@@ -92,7 +77,7 @@ Example:
 Rule:
 - 如果使用者已經提供來源，就不要再問一次。
 
-## Step 6: final pre-write summary
+## Step 5: final pre-write summary
 
 Example:
 
