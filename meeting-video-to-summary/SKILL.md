@@ -37,7 +37,7 @@ Google Drive URL / local path
 
 ## Constants
 
-- **目標資料夾 ID**：`13xYAAzoBC76l7EfnYX3j8G-H28bGUjSM`（Google Drive 中的「Claude AI 會議記錄」資料夾，由 zhisen@aemass.com 分享給 giintaipei@gmail.com）
+- **目標資料夾 ID**：`13xYAAzoBC76l7EfnYX3j8G-H28bGUjSM`（Google Drive 中的「Claude AI 會議記錄」資料夾，由 Che An Wu 分享給 giintaipei@gmail.com）
 - **目標資料夾連結**：https://drive.google.com/drive/folders/13xYAAzoBC76l7EfnYX3j8G-H28bGUjSM
 
 若未來資料夾變動，請更新此段。
