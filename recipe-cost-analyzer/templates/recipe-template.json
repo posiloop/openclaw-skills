@@ -1,0 +1,30 @@
+{
+  "type": "recipe",
+  "recipe_id": "請改成短英文／拼音 id，如 tomato-beef-stew",
+  "name": "食譜名稱",
+  "site": "中科15B / 鴻海 / 台北央廚 / 其他站點",
+  "company": "益循生活",
+  "yield": {
+    "total_input_kg": 0,
+    "production_yield_rate": 0.90,
+    "total_output_kg": 0,
+    "unit_cost_per_kg": 0
+  },
+  "instructions": "製作流程說明（可選）",
+  "ingredients": [
+    {
+      "name": "食材名稱（盡量對應 uMeal 價格表的「輸入名稱」）",
+      "supplier": "供應商（uMeal 價格表帶；可手動指定）",
+      "quantity": 0,
+      "unit": "KG / L / 顆 / 片 / 個",
+      "step_yield_rate": 0.98,
+      "unit_price": 0,
+      "cost": 0,
+      "note": ""
+    }
+  ],
+  "total_cost": 0,
+  "created": "YYYY-MM-DD",
+  "last_updated": "YYYY-MM-DD",
+  "version": 1
+}

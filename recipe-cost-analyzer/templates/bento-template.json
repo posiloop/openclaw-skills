@@ -1,0 +1,28 @@
+{
+  "type": "bento",
+  "bento_id": "請改成短英文／拼音 id，如 tomato-beef-bento",
+  "name": "餐盒名稱",
+  "site": "中科15B / 鴻海 / 台北央廚 / 其他站點",
+  "company": "益循生活",
+  "ingredients": [
+    {
+      "name": "內容物名稱（食譜生產物或原料）",
+      "source": "recipe / raw",
+      "source_id": "若 source=recipe，填食譜的 recipe_id；否則為空",
+      "supplier": "若 source=raw，從 uMeal 帶；否則為空",
+      "quantity": 0,
+      "unit": "KG / L / 顆 / 片 / 個",
+      "step_yield_rate": 1.00,
+      "unit_price": 0,
+      "cost": 0,
+      "note": ""
+    }
+  ],
+  "total_cost": 0,
+  "selling_price": 0,
+  "tax_excluded_price": 0,
+  "cost_ratio_percent": 0,
+  "created": "YYYY-MM-DD",
+  "last_updated": "YYYY-MM-DD",
+  "version": 1
+}
